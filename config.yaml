@@ -1,8 +1,64 @@
+# ============================================
+# CONFIGURACIÓN GENERAL DEL BOT DE ACCIONES
+# ============================================
+
 stocks:
   - AAPL
   - MSFT
   - AMZN
   - TSLA
+
+columns:
+  - Close
+  - Open
+  - High
+  - Low
+  - Volume
+
+report_style: "markdown"   # opciones: markdown, excel, emoji
+
+# ============================================
+# EXPORTACIÓN DE ARCHIVOS
+# ============================================
+
+export_formats:
+  - pdf
+  - html
+  - excel
+
+whatsapp_send_file: true
+whatsapp_file_format: "pdf"   # pdf, html, excel
+
+# ============================================
+# ALERTAS
+# ============================================
+
+alert_threshold: 3
+show_alerts: true
+
+# ============================================
+# RESUMEN
+# ============================================
+
+summary_enabled: true
+summary_type: "detailed"   # simple, detailed
+
+# ============================================
+# INDICADORES VISUALES
+# ============================================
+
+trend_indicators: true
+
+# ============================================
+# PREDICCIÓN SIMPLE
+# ============================================
+
+prediction_enabled: true
+prediction_days: 5
+
+# ============================================
+# DESTINATARIOS
+# ============================================
 
 email_to: "tu_correo@proton.me"
 whatsapp_to: "+51TU_NUMERO"
