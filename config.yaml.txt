@@ -1,0 +1,8 @@
+stocks:
+  - AAPL
+  - MSFT
+  - AMZN
+  - TSLA
+
+email_to: "tu_correo@proton.me"
+whatsapp_to: "+51TU_NUMERO"
