@@ -1,3 +1,5 @@
 yfinance
-twilio
-PyYAML
+pandas
+fpdf
+requests
+numpy
