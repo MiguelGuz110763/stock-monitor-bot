@@ -1,14 +1,33 @@
 import smtplib
-from email.mime.text import MIMEText
+from email.message import EmailMessage
 
-def send_email(report, email_to):
-    msg = MIMEText(report)
-    msg["Subject"] = "Reporte diario de acciones"
-    msg["From"] = "bot@stockmonitor.com"
+
+def send_email(report, email_to, attachments=None):
+    # Configura aquí tu servidor SMTP real
+    smtp_server = "smtp.tu_proveedor.com"
+    smtp_port = 587
+    smtp_user = "TU_USUARIO_SMTP"
+    smtp_pass = "TU_PASSWORD_SMTP"
+
+    msg = EmailMessage()
+    msg["Subject"] = "Reporte de acciones"
+    msg["From"] = smtp_user
     msg["To"] = email_to
+    msg.set_content(report)
 
-    with smtplib.SMTP("smtp.gmail.com", 587) as server:
+    if attachments:
+        for path in attachments:
+            with open(path, "rb") as f:
+                data = f.read()
+            filename = path.split("/")[-1]
+            msg.add_attachment(
+                data,
+                maintype="application",
+                subtype="octet-stream",
+                filename=filename,
+            )
+
+    with smtplib.SMTP(smtp_server, smtp_port) as server:
         server.starttls()
-        # Si usas Gmail, debes poner tu App Password aquí
-        server.login("TU_CORREO", "TU_APP_PASSWORD")
-        server.sendmail("TU_CORREO", email_to, msg.as_string())
+        server.login(smtp_user, smtp_pass)
+        server.send_message(msg)
