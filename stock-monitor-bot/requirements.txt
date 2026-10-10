@@ -1,6 +1,0 @@
-yfinance
-pandas
-matplotlib
-twilio
-python-dotenv
-requests
